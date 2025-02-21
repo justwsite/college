@@ -9,7 +9,7 @@ const FileUpload = multer({ dest: "uploads/" });
 app.use(express.json());
 app.use(express.static("public"));
 
-app.post("/FileUpload", FileUpload.array("files"), (req, res) => {
+app.post("/FileUpload", FileUpload.array("input-file"), (req, res) => {
     const lastName = req.body.lastName || "БезИмени"; 
     const userFolder = "./uploads/${lastName}";
 
