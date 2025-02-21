@@ -9,7 +9,7 @@ const FileUpload = multer({ dest: "uploads/" });
 app.use(express.json());
 app.use(express.static("public"));
 
-app.post("/FileUpload", upload.array("input-file"), (req, res) => {
+app.post("/FileUpload", FileUpload.array("input-file"), (req, res) => {
     const lastName = req.body.lastName || "БезИмени"; 
     const userFolder = `./uploads/${lastName}`;
 
@@ -18,11 +18,11 @@ app.post("/FileUpload", upload.array("input-file"), (req, res) => {
     }
 
     req.files.forEach(file => {
-        fs.renameSync(file.path, `${userFolder}/${file.originalname}`);
+        fs.renameSync(file.path, path.join(userFolder, file.originalname));
     });
         res.send(`Файлы загружены в GitHub в папку ${lastName}`);
     });
-});
+
 
 app.get("/", (req, res) => {
     res.send("Сервер работает! Используйте /upload для загрузки файлов.");
