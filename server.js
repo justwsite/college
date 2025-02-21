@@ -11,7 +11,7 @@ app.use(express.static("public"));
 
 app.post("/FileUpload", upload.array("input-file"), (req, res) => {
     const lastName = req.body.lastName || "БезИмени"; 
-    const userFolder = "./uploads/${lastName}";
+    const userFolder = `./uploads/${lastName}`;
 
     if (!fs.existsSync(userFolder)) {
         fs.mkdirSync(userFolder, { recursive: true });
@@ -20,13 +20,6 @@ app.post("/FileUpload", upload.array("input-file"), (req, res) => {
     req.files.forEach(file => {
         fs.renameSync(file.path, `${userFolder}/${file.originalname}`);
     });
-
-    exec(`git add uploads/* && git commit -m "Добавлен новый файл для ${lastName}" && git push`, 
-    (err, stdout, stderr) => {
-        if (err) {
-            console.error(err);
-            return res.status(500).send("Ошибка при загрузке в GitHub.");
-        }
         res.send(`Файлы загружены в GitHub в папку ${lastName}`);
     });
 });
@@ -35,4 +28,4 @@ app.get("/", (req, res) => {
     res.send("Сервер работает! Используйте /upload для загрузки файлов.");
 });
 
-app.listen(port, () => console.log("Сервер работает на порту ${port}"));
+app.listen(port, () => console.log(`Сервер работает на порту ${port}`));
