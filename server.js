@@ -11,7 +11,7 @@ app.use(express.static("public"));
 
 app.post("/upload", upload.array("files"), (req, res) => {
     const lastName = req.body.lastName || "БезИмени"; 
-    const userFolder = `./uploads/${lastName}`;
+    const userFolder = "./uploads/${lastName}";
 
     if (!fs.existsSync(userFolder)) {
         fs.mkdirSync(userFolder, { recursive: true });
