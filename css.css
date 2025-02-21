@@ -1,0 +1,36 @@
+html, body, #main {height: 100vh; min-height: 1000px;}
+body {margin: 0; padding: 0; background: #4cffff; width: 100%; font-family: sans-serif;}
+#main {background: white; width: 100%; margin: auto auto; padding: 20px; box-sizing: border-box; }
+a {text-decoration: none; color: inherit;}
+button {border: 0; background: none; font-size: inherit; padding: 10px;}
+
+#nav {width: 100%; flex-wrap: wrap; display: flex; align-items: center; font-size: 0.7em;}
+#nav a {display: inline-block; padding: 2px;}
+#nav i, a.fa-solid, a.fa-brands {width: 15px; height: 15px; text-align: center;}
+#nav a:hover {background: #003bd1; color: white;}
+.left, .center, .right {flex-shrink: 0;}
+.center, .right {text-align: right; flex-grow: 1;}
+#logo a {display: flex; align-items: center; font-size: 20px; font-weight: bold; color: #132281; max-width: 450px;}
+#logo a img {height: 100px; margin: 0 15px 0 0;}
+#logo img {float: left;}
+h4 {background: #003bd1; color: white; padding: 15px 10px; border-radius: 0; border: solid #0F137E; border-width: 3px 0 3px 0;}
+h4:hover, form div span:hover {background: #0D5CD9;}
+
+form {line-height: 1.8;}
+.fa-file {font-size: 25px;}
+form select {font-size: inherit; max-width: 440px; width: 100%;}
+form button {background: #283d54; color: white;}
+form button:hover {background: #2C5367;}
+form div {display: inline-block;}
+form div span {width: 16px; height: 16px; text-align: center; font-size: 15px;
+vertical-align: top; display: inline-block; margin: 0 10px; line-height: normal;
+background: #003bd1; color: white; border-radius: 100px;}
+.remove {color: red; margin: 5px; padding: 0px 5px; background: none;}
+.remove:hover {background: red; border-radius: 100px; color: white;}
+#select {border-radius: 10px;}
+#upload {width: 300px;}
+
+@media (min-width: 576px) {#nav {font-size: 0.8em;}}
+@media (min-width: 768px) {#main {width: 750px;} #nav {font-size: 0.9em;}}
+@media (min-width: 992px) {#main {width: 970px;}  .right {flex-grow: 0;}}
+@media (min-width: 1200px) {#main {width: 1170px;}}
