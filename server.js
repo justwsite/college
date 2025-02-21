@@ -4,12 +4,12 @@ const fs = require("fs");
 const { exec } = require("child_process");
 
 const app = express();
-const upload = multer({ dest: "uploads/" });
+const FileUpload = multer({ dest: "uploads/" });
 
 app.use(express.json());
 app.use(express.static("public"));
 
-app.post("/upload", upload.array("files"), (req, res) => {
+app.post("/FileUpload", FileUpload.array("files"), (req, res) => {
     const lastName = req.body.lastName || "БезИмени"; 
     const userFolder = "./uploads/${lastName}";
 
