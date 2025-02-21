@@ -31,4 +31,8 @@ app.post("/FileUpload", FileUpload.array("files"), (req, res) => {
     });
 });
 
+app.get("/", (req, res) => {
+    res.send("Сервер работает! Используйте /upload для загрузки файлов.");
+});
+
 app.listen(3000, () => console.log("Сервер работает на порту 3000"));
