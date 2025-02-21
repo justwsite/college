@@ -35,4 +35,4 @@ app.get("/", (req, res) => {
     res.send("Сервер работает! Используйте /upload для загрузки файлов.");
 });
 
-app.listen(port, () => console.log("Сервер работает на порту 3000"));
+app.listen(port, () => console.log("Сервер работает на порту ${port}"));
