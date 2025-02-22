@@ -1,4 +1,5 @@
 const express = require("express");
+const path = require("path");
 const multer = require("multer");
 const fs = require("fs");
 const { exec } = require("child_process");
@@ -10,7 +11,7 @@ app.use(express.json());
 app.use(express.static("public"));
 
 app.post("/upload", FileUpload.array("input-file"), (req, res) => {
-    const lastName = req.body.lastName || "БезИмени"; 
+    const lastName = req.body["last-name"] || "БезИмени"; 
     const userFolder = `./uploads/${lastName}`;
 
     if (!fs.existsSync(userFolder)) {
